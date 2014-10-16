@@ -1,0 +1,20 @@
+---
+# Local git clone of the drush repo
+- local_action: git repo={{ drush_repo }} dest={{ drush_local_dir }} version={{ drush_version }}
+  tags:
+    - drush
+
+# Run composer in the local drush repo to install dependencies
+- local_action: composer working-dir={{ drush_local_dir }}
+  tags:
+    - drush
+
+# Run composer once to install remaining dependencies ( from pear )
+- local_action: shell sh {{ drush_local_dir }}/drush
+  tags:
+    - drush
+
+# Rsync the drush repo with dependencies to the remote host
+- synchronize: src={{ drush_local_dir }} dest={{ drush_remote_dir }}
+  tags:
+    - drush

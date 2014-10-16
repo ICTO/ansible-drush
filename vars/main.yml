@@ -1,0 +1,4 @@
+---
+# vars file for roles/drush
+drush_repo: git@github.com:drush-ops/drush.git
+drush_version: 6.x
