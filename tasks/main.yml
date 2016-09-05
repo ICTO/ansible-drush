@@ -5,7 +5,7 @@
     - drush
 
 # Run composer in the local drush repo to install dependencies
-- local_action: composer working-dir={{ drush_local_dir }}
+- local_action: ~/bin/composer working-dir={{ drush_local_dir }}
   tags:
     - drush
 
